@@ -4,7 +4,7 @@ from app.database import users_collection
 from app.utils import hash_password, verify_password, create_jwt_token
 from app.schemas import UserSchema, TokenSchema
 from app.auth import get_current_user
-
+from app.config import JWT_ALGORITHM
 router = APIRouter(prefix="/users", tags=["/users"])
 
 @router.post("/register", response_model=dict)
@@ -29,4 +29,4 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
 @router.get("/me")
 async def get_current_user():
-    return {"message":'get you all users'}
+    return {"message":F"""get you all users {JWT_ALGORITHM}"""}
