@@ -29,4 +29,4 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
 @router.get("/me")
 async def get_current_user():
-    return 'get you all users'
+    return {"message":'get you all users'}
